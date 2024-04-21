@@ -21,7 +21,8 @@ import {console2} from "forge-std/console2.sol";
 import {IRiscZeroVerifier} from "risc0/IRiscZeroVerifier.sol";
 import {ControlID, RiscZeroGroth16Verifier} from "risc0/groth16/RiscZeroGroth16Verifier.sol";
 
-import {EvenNumber} from "../contracts/EvenNumber.sol";
+import {Multicall} from "../contracts/Multicall.sol";
+import {Order} from "../contracts/Order.sol";
 
 /// @notice Deployment script for the RISC Zero starter project.
 /// @dev Use the following environment variable to control the deployment:
@@ -38,8 +39,11 @@ contract EvenNumberDeploy is Script {
         IRiscZeroVerifier verifier = new RiscZeroGroth16Verifier(ControlID.CONTROL_ID_0, ControlID.CONTROL_ID_1);
         console2.log("Deployed RiscZeroGroth16Verifier to", address(verifier));
 
-        EvenNumber evenNumber = new EvenNumber(verifier);
-        console2.log("Deployed EvenNumber to", address(evenNumber));
+        Multicall multicall = new Multicall(verifier);
+        console2.log("Deployed Multicall to", address(multicall));
+
+        Order order = new Order();
+        console2.log("Deployed Multicall to", address(order));
 
         vm.stopBroadcast();
     }
