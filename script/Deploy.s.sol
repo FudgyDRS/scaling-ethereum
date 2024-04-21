@@ -30,7 +30,7 @@ import {Order} from "../contracts/Order.sol";
 ///
 /// See the Foundry documentation for more information about Solidity scripts.
 /// https://book.getfoundry.sh/tutorials/solidity-scripting
-contract EvenNumberDeploy is Script {
+contract Deploy is Script {
     function run() external {
         uint256 deployerKey = uint256(vm.envBytes32("ETH_WALLET_PRIVATE_KEY"));
 
